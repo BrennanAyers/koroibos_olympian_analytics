@@ -9,7 +9,8 @@ require 'rspec/rails'
 require 'simplecov'
 SimpleCov.start
 
-begin # hide folders from SimpleCov if we're not using them
+# hide folders from SimpleCov if we're not using them
+begin
   default_lines = {
     'mailers' => 4,
     'channels' => 4,
@@ -25,7 +26,7 @@ begin # hide folders from SimpleCov if we're not using them
   end
 
   files = Dir['./app/channels/**/*.rb']
-  if files.count == 2 && files.all?{|f| File.read(f).each_line.count == default_lines['channels']}
+  if files.count == 2 && files.all? { |f| File.read(f).each_line.count == default_lines['channels'] }
     SimpleCov.add_filter 'app/channels'
   end
 end
