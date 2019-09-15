@@ -9,12 +9,12 @@ Our main storage of information is done through the Athletes table. An Athlete r
 - Name `String`
 - Sex `String`
 - Age `Integer`
-- Height `Integer`
-- Weight `Integer`
 - Team `String`
 - Games `String`
 - Sport `String`
 - Event `String`
 
 And the following non-required attribute:
+- Height `Integer`
+- Weight `Integer`
 - Medal `String`
