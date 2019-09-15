@@ -6,7 +6,7 @@
 To be written...
 
 ## Database Models
-Our main storage of information is done through the Athletes table. An Athlete resource currently has the following required attributes:
+Our main storage of information is done through the Olympians table. An Olympian resource currently has the following required attributes:
 - Name `String`
 - Sex `String`
 - Age `Integer`
@@ -21,11 +21,11 @@ And the following non-required attribute:
 - Medal `String`
 
 ## Data Importing
-We have written convenient Rake tasks to facilitate the process of importing records into the database. Currently, this requires the file to be placed in the `db/csv` directory, with a specific name. For the Athletes table:
-- File named `athlete.csv`
-- `rake import:athletes` in your terminal
+We have written convenient Rake tasks to facilitate the process of importing records into the database. Currently, this requires the file to be placed in the `db/csv` directory, with a specific name. For the Olympians table:
+- File named `olympian.csv`
+- `rake import:olympians` in your terminal
 
-This import task will work with CSVs formatted following the above specification for the Athlete resource, with missing Height, Weight, or Medal attributes marked with an `NA`.
+This import task will work with CSVs formatted following the above specification for the Olympian resource, with missing Height, Weight, or Medal attributes marked with an `NA`.
 
 ## Contributing
 - Koroibos Olympian Analytics uses Travis CI to ensure project stability. Travis is one of our required checks, and is performed on new PRs. Your code can not be merged in if there are failing specs.
