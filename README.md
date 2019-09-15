@@ -1,24 +1,20 @@
-# README
+# Koroibos Olympian Analytics Platform
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Details
 
-Things you may want to cover:
+To be written...
 
-* Ruby version
+## Database Models
+Our main storage of information is done through the Athletes table. An Athlete resource currently has the following required attributes:
+- Name `String`
+- Sex `String`
+- Age `Integer`
+- Height `Integer`
+- Weight `Integer`
+- Team `String`
+- Games `String`
+- Sport `String`
+- Event `String`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+And the following non-required attribute:
+- Medal `String`
