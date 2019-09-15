@@ -1,0 +1,6 @@
+language: ruby
+cache: bundler
+services:
+  - postgresql
+before_script:
+  - psql -c 'CREATE DATABASE koroibos_olympian_analytics_test;' -U postgres
