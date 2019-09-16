@@ -6,7 +6,7 @@
 To be written...
 
 ## Database Models
-Our main storage of information is done through the Athletes table. An Athlete resource currently has the following required attributes:
+Our main storage of information is done through the Olympians table. An Olympian resource currently has the following required attributes:
 - Name `String`
 - Sex `String`
 - Age `Integer`
@@ -21,11 +21,55 @@ And the following non-required attribute:
 - Medal `String`
 
 ## Data Importing
-We have written convenient Rake tasks to facilitate the process of importing records into the database. Currently, this requires the file to be placed in the `db/csv` directory, with a specific name. For the Athletes table:
-- File named `athlete.csv`
-- `rake import:athletes` in your terminal
+We have written convenient Rake tasks to facilitate the process of importing records into the database. Currently, this requires the file to be placed in the `db/csv` directory, with a specific name. For the Olympians table:
+- File named `olympian.csv`
+- `rake import:olympians` in your terminal
 
-This import task will work with CSVs formatted following the above specification for the Athlete resource, with missing Height, Weight, or Medal attributes marked with an `NA`.
+This import task will work with CSVs formatted following the above specification for the Olympian resource, with missing Height, Weight, or Medal attributes marked with an `NA`.
+
+## Endpoints
+###### Note: We are using the [FastJSON API](https://github.com/Netflix/fast_jsonapi) library to serialize our information. That means that all responses will be nested inside of a `data` array, and objects might have an `id` of `null` because of how our Olympian data is collated.
+### GET `api/v1/olympians`
+- This GET request returns a collection of all stored Olympians, serialized to include the following information:
+- - Name
+- - Team
+- - Age
+- - Sport
+- - Total Number of Medals Won
+- Example Request:
+```
+GET api/v1/olympians
+```
+- Example Response:
+```json
+{
+  "data": [
+    {
+      "id": null,
+      "type": "olympian",
+      "attributes": {
+          "name": "  Gabrielle Marie \"Gabby\" Adcock (White-)",
+          "team": "Great Britain",
+          "age": 25,
+          "sport": "Badminton",
+          "total_medals_won": 0
+      }
+    },
+    {
+      "id": null,
+      "type": "olympian",
+      "attributes": {
+          "name": " Th Anh",
+          "team": "Vietnam",
+          "age": 20,
+          "sport": "Fencing",
+          "total_medals_won": 0
+      }
+    },
+    ...
+  ]
+}
+```
 
 ## Contributing
 - Koroibos Olympian Analytics uses Travis CI to ensure project stability. Travis is one of our required checks, and is performed on new PRs. Your code can not be merged in if there are failing specs.
