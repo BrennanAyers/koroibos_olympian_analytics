@@ -44,5 +44,15 @@ RSpec.describe Olympian, type: :model do
       expect(youngest.first.total_medals_won).to eq(2)
       expect(youngest.last.total_medals_won).to_not eq(0)
     end
+
+    it "should return the oldest Olympian with ::all_with_total_medals_won('DESC')" do
+      expect(Olympian.all.length).to eq(5)
+      oldest = Olympian.all_with_total_medals_won('DESC')
+      expect(oldest.length).to eq(1)
+      expect(oldest.first.name).to_not eq('Brian Plantico')
+      expect(oldest.last.name).to eq('Logan Pile')
+      expect(oldest.first.total_medals_won).to_not eq(2)
+      expect(oldest.last.total_medals_won).to eq(0)
+    end
   end
 end
