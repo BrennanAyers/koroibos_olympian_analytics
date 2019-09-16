@@ -62,4 +62,26 @@ describe 'Olympian API' do
     expect(olympian.first['attributes']['sport']).to eq('Cycling')
     expect(olympian.first['attributes']['total_medals_won']).to eq(2)
   end
+
+  it 'should return the oldest Olympian with pertinent information' do
+    create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', medal: 'Gold')
+    create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', medal: 'Silver')
+    create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', event: 'The Downhill')
+    create(:olympian, name: 'Logan Pile', team: 'Colorado', age: 55, sport: 'Wakeboarding', event: 'Sick Waves')
+    create(:olympian, name: 'Logan Pile', team: 'Colorado', age: 55, sport: 'Wakeboarding', event: 'Not So Sick Waves')
+    create(:olympian, name: 'Earl Stephens', team: 'Florida', age: 34, sport: 'Boxing', event: 'VS Mike Tyson')
+
+    get '/api/v1/olympians?age=oldest'
+
+    expect(response).to be_successful
+
+    olympian = JSON.parse(response.body)['data']
+
+    expect(olympian.length).to eq(1)
+    expect(olympian.first['attributes']['name']).to eq('Logan Pile')
+    expect(olympian.first['attributes']['team']).to eq('Colorado')
+    expect(olympian.first['attributes']['age']).to eq(55)
+    expect(olympian.first['attributes']['sport']).to eq('Wakeboarding')
+    expect(olympian.first['attributes']['total_medals_won']).to eq(0)
+  end
 end
