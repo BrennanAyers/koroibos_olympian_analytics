@@ -7,7 +7,8 @@ module Api
       def index
         age = 'ASC' if params[:age] == 'youngest'
         age = 'DESC' if params[:age] == 'oldest'
-        render json: OlympianSerializer.new(Olympian.all_with_total_medals_won(age))
+        json = OlympianSerializer.new(Olympian.all_with_total_medals_won(age))
+        render json: json
       end
     end
   end
