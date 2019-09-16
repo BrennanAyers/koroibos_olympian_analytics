@@ -34,5 +34,15 @@ RSpec.describe Olympian, type: :model do
       expect(olympians.first.total_medals_won).to eq(2)
       expect(olympians.last.total_medals_won).to eq(0)
     end
+
+    it "should return the youngest Olympian with ::all_with_total_medals_won('ASC')" do
+      expect(Olympian.all.length).to eq(5)
+      youngest = Olympian.all_with_total_medals_won('ASC')
+      expect(youngest.length).to eq(1)
+      expect(youngest.first.name).to eq('Brian Plantico')
+      expect(youngest.last.name).to_not eq('Logan Pile')
+      expect(youngest.first.total_medals_won).to eq(2)
+      expect(youngest.last.total_medals_won).to_not eq(0)
+    end
   end
 end
