@@ -15,6 +15,6 @@ class Olympian < ApplicationRecord
     )
       .group(:name, :team, :age, :sport)
       .order(:name)
-    !age.nil? ? olympians.order(age: age).limit(1) : olympians
+    !age.nil? ? olympians.unscope(:order).order(age: age).limit(1) : olympians
   end
 end
