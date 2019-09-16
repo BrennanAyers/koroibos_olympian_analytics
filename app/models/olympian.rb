@@ -6,8 +6,14 @@ class Olympian < ApplicationRecord
   validates_presence_of :name, :sex, :age, :team, :games, :sport, :event
 
   def self.all_with_total_medals_won
-    select('olympians.name, olympians.team, olympians.age, olympians.sport, COUNT (medal) AS total_medals_won')
-    .group(:name, :team, :age, :sport)
-    .order(:name)
+    select(
+      'olympians.name,
+      olympians.team,
+      olympians.age,
+      olympians.sport,
+      COUNT (medal) AS total_medals_won'
+    )
+      .group(:name, :team, :age, :sport)
+      .order(:name)
   end
 end
