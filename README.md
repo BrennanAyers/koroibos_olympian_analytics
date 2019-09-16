@@ -70,6 +70,57 @@ GET api/v1/olympians
   ]
 }
 ```
+### GET `api/v1/olympians?age=YOUNGEST_OR_OLDEST`
+- This GET request returns the Youngest or Oldest in Age of all stored Olympians, serialized to include the following information:
+- - Name
+- - Team
+- - Age
+- - Sport
+- - Total Number of Medals Won
+- Example Request:
+```
+GET api/v1/olympians?age=youngest
+```
+- Example Response:
+```json
+{
+  "data": [
+    {
+      "id": null,
+      "type": "olympian",
+      "attributes": {
+        "name": "Ana Iulia Dascl",
+        "team": "Romania",
+        "age": 13,
+        "sport": "Swimming",
+        "total_medals_won": 0
+      }
+    }
+  ]
+}
+```
+- Example Request:
+```
+GET api/v1/olympians?age=oldest
+```
+- Example Response:
+```json
+{
+  "data": [
+    {
+      "id": null,
+      "type": "olympian",
+      "attributes": {
+        "name": "Julie Brougham",
+        "team": "New Zealand",
+        "age": 62,
+        "sport": "Equestrianism",
+        "total_medals_won": 0
+      }
+    }
+  ]
+}
+```
 
 ## Contributing
 - Koroibos Olympian Analytics uses Travis CI to ensure project stability. Travis is one of our required checks, and is performed on new PRs. Your code can not be merged in if there are failing specs.
