@@ -5,8 +5,8 @@
 class Olympian < ApplicationRecord
   validates_presence_of :name, :sex, :age, :team, :games, :sport, :event
 
-  def self.all_with_total_medals_won
-    select(
+  def self.all_with_total_medals_won(age = nil)
+    olympians = select(
       'olympians.name,
       olympians.team,
       olympians.age,
@@ -15,5 +15,6 @@ class Olympian < ApplicationRecord
     )
       .group(:name, :team, :age, :sport)
       .order(:name)
+    !age.nil? ? olympians.order(age: age).limit(1) : olympians
   end
 end
