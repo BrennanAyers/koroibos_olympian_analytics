@@ -5,7 +5,7 @@ module Api
   module V1
     class OlympiansController < ApplicationController
       def index
-        render json: {data: Olympian.all}
+        render json: OlympianSerializer.new(Olympian.all_with_total_medals_won)
       end
     end
   end
