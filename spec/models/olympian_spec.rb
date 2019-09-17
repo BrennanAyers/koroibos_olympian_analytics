@@ -18,11 +18,11 @@ RSpec.describe Olympian, type: :model do
 
   describe 'class methods' do
     before :each do
-      create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', medal: 'Gold')
-      create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', medal: 'Silver')
-      create(:olympian, name: 'Brian Plantico', team: 'Wisconsin', age: 17, sport: 'Cycling', event: 'The Downhill')
-      create(:olympian, name: 'Logan Pile', team: 'Colorado', age: 55, sport: 'Wakeboarding', event: 'Sick Waves')
-      create(:olympian, name: 'Logan Pile', team: 'Colorado', age: 55, sport: 'Wakeboarding', event: 'Not So Sick Waves')
+      create(:olympian, name: 'Brian Plantico', sex: 'M', team: 'Wisconsin', age: 17, weight: 70, sport: 'Cycling', medal: 'Gold')
+      create(:olympian, name: 'Brian Plantico', sex: 'M', team: 'Wisconsin', age: 17, weight: 70, sport: 'Cycling', medal: 'Silver')
+      create(:olympian, name: 'Brian Plantico', sex: 'M', team: 'Wisconsin', age: 17, weight: 70, sport: 'Cycling', event: 'The Downhill')
+      create(:olympian, name: 'Logan Pile', sex: 'M', team: 'Colorado', age: 55, weight: 60, sport: 'Wakeboarding', event: 'Sick Waves')
+      create(:olympian, name: 'Logan Pile', sex: 'M', team: 'Colorado', age: 55, weight: 60, sport: 'Wakeboarding', event: 'Not So Sick Waves')
     end
 
     it 'should return collated Olympians with ::all_with_total_medals_won' do
@@ -53,6 +53,16 @@ RSpec.describe Olympian, type: :model do
       expect(oldest.last.name).to eq('Logan Pile')
       expect(oldest.first.total_medals_won).to_not eq(2)
       expect(oldest.last.total_medals_won).to eq(0)
+    end
+
+    it 'should return the statistics for all Olympians in the database with ::statistics' do
+      create(:olympian, name: 'Alexandra Chakres', sex: 'F', age: 34, weight: 55)
+      expect(Olympian.all.length).to eq(6)
+      stats = Olympian.statistics.take
+      expect(stats.total_competing_olympians).to eq(3)
+      expect(stats.male_olympians).to eq(66.0)
+      expect(stats.female_olympians).to eq(55.0)
+      expect(stats.average_age).to eq(32.5)
     end
   end
 end
