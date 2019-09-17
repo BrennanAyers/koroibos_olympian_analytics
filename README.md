@@ -12,6 +12,9 @@ The intention of the project was to build a backend API service that takes in a 
 - Clear and Concise Documentation
 - Time Constraints
 
+## Hosted Version
+A live version of this application can be accessed via https://koroibos-olympian-analytics.herokuapp.com/ using our endpoints below! If you would like to run your own local version, follow the instructions that follow.
+
 ## Setup
 ### Requirements
 - Brew Package Manager
