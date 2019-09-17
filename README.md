@@ -3,7 +3,14 @@
 
 ## Details
 
-To be written...
+The Koroibos Olympian Analytics Platform is a final solo project by [Brennan Ayers](https://github.com/BrennanAyers), built in Ruby on Rails, for the [Turing School of Software and Design](https://turing.io) Backend Program, in the style of a coding challenge. All code and [planning boards](https://github.com/BrennanAyers/koroibos_olympian_analytics/projects/1?fullscreen=true) were created in 48 hours as would be required in a job application setting.
+
+The intention of the project was to build a backend API service that takes in a collection of Olympic data and returns it in easy to use Endpoints. This required importing of the information from a CSV and then collating it into a readable output through the use of the ActiveRecord ORM and FastJSON API Serializers.
+### Learning Goals
+- Project Management
+- Clean, Tested Code
+- Clear and Concise Documentation
+- Time Constraints
 
 ## Database Models
 Our main storage of information is done through the Olympians table. An Olympian resource currently has the following required attributes:
