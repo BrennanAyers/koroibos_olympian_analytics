@@ -17,4 +17,11 @@ class Olympian < ApplicationRecord
       .order(:name)
     !age.nil? ? olympians.unscope(:order).order(age: age).limit(1) : olympians
   end
+
+  def self.statistics
+    select("COUNT (DISTINCT name) AS total_competing_olympians,
+    AVG (age) AS average_age,
+    AVG (CASE WHEN sex = 'M' THEN weight END) AS male_olympians,
+    AVG (CASE WHEN sex = 'F' THEN weight END) AS female_olympians")
+  end
 end

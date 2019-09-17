@@ -121,6 +121,36 @@ GET api/v1/olympians?age=oldest
   ]
 }
 ```
+### GET `api/v1/olympian_stats`
+- This GET request returns statistical information for all Olympians stored in the database. This includes the following:
+- - Total Olympians Competing
+- - Average Weight of Male Olympians (in kg)
+- - Average Weight of Female Olympians (in kg)
+- - Average Age of all Olympians
+- Example Request:
+```
+GET api/v1/olympian_stats
+```
+- Example Response:
+```json
+{
+  "data": [
+    {
+      "id": null,
+      "type": "olympian_stats",
+      "attributes": {
+        "total_competing_olympians": 2850,
+        "average_age": "26.2",
+        "average_weight": {
+          "unit": "kg",
+          "male_olympians": "78.6",
+          "female_olympians": "61.9"
+        }
+      }
+    }
+  ]
+}
+```
 
 ## Contributing
 - Koroibos Olympian Analytics uses Travis CI to ensure project stability. Travis is one of our required checks, and is performed on new PRs. Your code can not be merged in if there are failing specs.
